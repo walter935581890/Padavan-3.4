@@ -28,7 +28,7 @@ echo "CONFIG_FIRMWARE_INCLUDE_SSOBFS=n" >> .config #simple-obfs混淆插件
 ##科学上网##
 
 ##内网穿透服务##
-echo "CONFIG_FIRMWARE_INCLUDE_ZEROTIER=n" >> .config #zerotier ~1.3M
+echo "CONFIG_FIRMWARE_INCLUDE_ZEROTIER=y" >> .config #zerotier ~1.3M
 echo "CONFIG_FIRMWARE_INCLUDE_ALIDDNS=n" >> .config #aliddns  ~0.5M
 echo "CONFIG_FIRMWARE_INCLUDE_FRPC=n" >> .config #frp ~2.1M
 echo "CONFIG_FIRMWARE_INCLUDE_FRPS=n" >> .config #frp ~2.1M
