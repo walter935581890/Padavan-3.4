@@ -478,7 +478,22 @@ void restart_zerotier(void){
 	start_zerotier();
 }
 #endif
+#if defined(APP_DDNSTO)
+void stop_ddnsto(void){
+	eval("/usr/bin/ddnsto.sh","stop");
+}
 
+void start_ddnsto(void){
+	int ddnsto_enable = nvram_get_int("ddnsto_enable");
+	if ( ddnsto_enable == 1)
+		eval("/usr/bin/ddnsto.sh","start");
+}
+
+void restart_ddnsto(void){
+	stop_ddnsto();
+	start_ddnsto();
+}
+#endif
 #if defined(APP_ADBYBY)
 void stop_adbyby(void){
 	eval("/usr/bin/adbyby.sh","stop");
