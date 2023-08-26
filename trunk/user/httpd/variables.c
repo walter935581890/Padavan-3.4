@@ -1013,6 +1013,14 @@
 	};
 #endif
 
+#if defined(APP_DDNSTO)
+	struct variable variables_DDNSTO[] = {
+			{"ddnsto_enable", "", NULL, EVM_RESTART_DDNSTO},
+			{"ddnsto_id", "", NULL, EVM_RESTART_DDNSTO},
+			{0,0,0,0}
+		};
+#endif
+
 #if defined(APP_SHADOWSOCKS)
 	struct variable variables_ShadowsocksConf[] = {
 			{"ss_enable","",NULL, EVM_RESTART_SHADOWSOCKS},
