@@ -900,6 +900,12 @@ stop_services(int stopall)
 #if defined(APP_ZEROTIER)
 	stop_zerotier();
 #endif
+#if defined(APP_DDNSTO)
+	stop_ddnsto();
+#endif
+#if defined(APP_ddnsto)
+	stop_ddnsto();
+#endif
 #if defined(APP_ALIDDNS)
 	stop_aliddns();
 #endif
