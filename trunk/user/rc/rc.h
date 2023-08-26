@@ -596,6 +596,11 @@ void restart_wyy(void);
 void stop_zerotier(void);
 void start_zerotier(void);
 void restart_zerotier(void);
+#if defined(APP_DDNSTO)
+void stop_ddnsto(void);
+void start_ddnsto(void);
+void restart_ddnsto(void);
+#endif
 #endif
 #if defined(APP_DNSFORWARDER)
 void stop_dnsforwarder(void);
