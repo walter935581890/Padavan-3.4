@@ -2319,6 +2319,15 @@ static int zerotier_status_hook(int eid, webs_t wp, int argc, char **argv)
 }
 #endif
 
+#if defined (APP_DDNSTO)
+static int ddnsto_status_hook(int eid, webs_t wp, int argc, char **argv)
+{
+	int ddnsto_status_code = pids("ddnsto");
+	websWrite(wp, "function ddnsto_status() { return %d;}\n", ddnsto_status_code);
+	return 0;
+}
+#endif
+
 #if defined (APP_FRP)
 static int frpc_status_hook(int eid, webs_t wp, int argc, char **argv)
 {
