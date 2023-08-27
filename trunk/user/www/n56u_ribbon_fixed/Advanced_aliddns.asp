@@ -25,7 +25,7 @@ var $j = jQuery.noConflict();
 
 $j(document).ready(function() {
 
-	init_itoggle('aliddns_enable',change_aliddns_enable_bridge);
+	init_itoggle('ddnsto_enable',change_ddnsto_enable_bridge);
 
 });
 
@@ -40,7 +40,7 @@ function initial(){
 	show_footer();
 	showmenu();
 
-	change_aliddns_enable_bridge(1);
+	change_ddnsto_enable_bridge(1);
 
 	if (!login_safe())
 		textarea_scripts_enabled(0);
@@ -49,7 +49,9 @@ function initial(){
 function showmenu(){
 showhide_div('zelink', found_app_zerotier());
 }
-
+function showmenu2(){
+showhide_div('ddlink', found_app_ddnsto());
+}
 function textarea_scripts_enabled(v){
 	inputCtrl(document.form['scripts.ddns_script.sh'], v);
 }
@@ -59,7 +61,7 @@ function applyRule(){
 		showLoading();
 		
 		document.form.action_mode.value = " Apply ";
-		document.form.current_page.value = "/Advanced_aliddns.asp";
+		document.form.current_page.value = "/Advanced_ddnsto.asp";
 		document.form.next_page.value = "";
 		
 		document.form.submit();
@@ -71,15 +73,15 @@ function done_validating(action){
 	refreshpage();
 }
 
-function change_aliddns_enable_bridge(mflag){
-	var m = document.form.aliddns_enable[0].checked;
-	showhide_div("aliddns_ak_tr", m);
-	showhide_div("aliddns_sk_tr", m);
-	showhide_div("aliddns_interval_tr", m);
-	showhide_div("aliddns_ttl_tr", m);
-	showhide_div("aliddns_domain_tr", m);
-	showhide_div("aliddns_domain2_tr", m);
-	showhide_div("aliddns_domain6_tr", m);
+function change_ddnsto_enable_bridge(mflag){
+	var m = document.form.ddnsto_enable[0].checked;
+	showhide_div("ddnsto_ak_tr", m);
+	showhide_div("ddnsto_sk_tr", m);
+	showhide_div("ddnsto_interval_tr", m);
+	showhide_div("ddnsto_ttl_tr", m);
+	showhide_div("ddnsto_domain_tr", m);
+	showhide_div("ddnsto_domain2_tr", m);
+	showhide_div("ddnsto_domain6_tr", m);
 	showhide_div("row_post_wan_script", m);
 }
 
@@ -104,7 +106,7 @@ function change_aliddns_enable_bridge(mflag){
 
 	<form method="post" name="form" id="ruleForm" action="/start_apply.htm" target="hidden_frame">
 
-	<input type="hidden" name="current_page" value="Advanced_aliddns.asp">
+	<input type="hidden" name="current_page" value="Advanced_ddnsto.asp">
 	<input type="hidden" name="next_page" value="">
 	<input type="hidden" name="next_host" value="">
 	<input type="hidden" name="sid_list" value="LANHostConfig;General;">
@@ -140,13 +142,13 @@ function change_aliddns_enable_bridge(mflag){
 							<div class="round_bottom">
 								<div class="row-fluid">
 									<div id="tabMenu" class="submenuBlock"></div>
-									<div class="alert alert-info" style="margin: 10px;">使用 Aliddns 实现顶级个人域名的 ddns 服务。 <a href="https://www.aliyun.com" target="blank"><i><u>Aliddns 主页</u></i></a>
+									<div class="alert alert-info" style="margin: 10px;">使用 ddnsto 实现顶级个人域名的 ddns 服务。 <a href="https://www.aliyun.com" target="blank"><i><u>ddnsto 主页</u></i></a>
 												<ul style="padding-top:5px;margin-top:10px;float: left;">
-												<li><a href="https://github.com/kyriosli/koolshare-aliddns" target="blank"><i><u>Aliddns 项目地址：https://github.com/kyriosli/koolshare-aliddns</u></i></a></li>
-												<li><a href="http://koolshare.cn/thread-64703-1-1.html" target="blank"><i><u>Aliddns 使用帮助：http://koolshare.cn/thread-64703-1-1.html</u></i></a></li>
+												<li><a href="https://github.com/kyriosli/koolshare-ddnsto" target="blank"><i><u>ddnsto 项目地址：https://github.com/kyriosli/koolshare-ddnsto</u></i></a></li>
+												<li><a href="http://koolshare.cn/thread-64703-1-1.html" target="blank"><i><u>ddnsto 使用帮助：http://koolshare.cn/thread-64703-1-1.html</u></i></a></li>
 												<li>使用前需要将域名添加到 aliyun 中，并添加一条A记录，使用之后将自动更新ip</li>
 												<li>点 <a href="https://help.aliyun.com/knowledge_detail/39844.html" target="blank"><i><u>这里</u></i></a> 查看不同域名注册商修改 DNS 方法。</li>
-												<li>点 <a href="https://help.aliyun.com/knowledge_detail/38738.html" target="blank"><i><u>这里</u></i></a> 查看如何获取 Aliddns 的 Access Key ID 和 Access Key Secret。</li>
+												<li>点 <a href="https://help.aliyun.com/knowledge_detail/38738.html" target="blank"><i><u>这里</u></i></a> 查看如何获取 ddnsto 的 Access Key ID 和 Access Key Secret。</li>
 												</ul>
 									</div>
 
@@ -154,75 +156,75 @@ function change_aliddns_enable_bridge(mflag){
 										<tr >
 											<th width="30%" style="border-top: 0 none;">上次运行:</th>
 											<td  colspan="3"style="border-top: 0 none;">
-											   <div >【<% nvram_get_x("","aliddns_last_act"); %>】</div>
+											   <div >【<% nvram_get_x("","ddnsto_last_act"); %>】</div>
 											</td>
 										</tr>
 										<tr>
-											<th width="30%" style="border-top: 0 none;"><a class="help_tooltip" href="javascript: void(0)" onmouseover="openTooltip(this, 26, 9);">启用 Aliddns 域名解析</a></th>
+											<th width="30%" style="border-top: 0 none;"><a class="help_tooltip" href="javascript: void(0)" onmouseover="openTooltip(this, 26, 9);">启用 ddnsto 域名解析</a></th>
 											<td style="border-top: 0 none;">
 													<div class="main_itoggle">
-													<div id="aliddns_enable_on_of">
-														<input type="checkbox" id="aliddns_enable_fake" <% nvram_match_x("", "aliddns_enable", "1", "value=1 checked"); %><% nvram_match_x("", "aliddns_enable", "0", "value=0"); %>  />
+													<div id="ddnsto_enable_on_of">
+														<input type="checkbox" id="ddnsto_enable_fake" <% nvram_match_x("", "ddnsto_enable", "1", "value=1 checked"); %><% nvram_match_x("", "ddnsto_enable", "0", "value=0"); %>  />
 													</div>
 												</div>
 												<div style="position: absolute; margin-left: -10000px;">
-													<input type="radio" value="1" name="aliddns_enable" id="aliddns_enable_1" class="input" value="1" onClick="change_aliddns_enable_bridge(1);" <% nvram_match_x("", "aliddns_enable", "1", "checked"); %> /><#checkbox_Yes#>
-													<input type="radio" value="0" name="aliddns_enable" id="aliddns_enable_0" class="input" value="0" onClick="change_aliddns_enable_bridge(1);" <% nvram_match_x("", "aliddns_enable", "0", "checked"); %> /><#checkbox_No#>
+													<input type="radio" value="1" name="ddnsto_enable" id="ddnsto_enable_1" class="input" value="1" onClick="change_ddnsto_enable_bridge(1);" <% nvram_match_x("", "ddnsto_enable", "1", "checked"); %> /><#checkbox_Yes#>
+													<input type="radio" value="0" name="ddnsto_enable" id="ddnsto_enable_0" class="input" value="0" onClick="change_ddnsto_enable_bridge(1);" <% nvram_match_x("", "ddnsto_enable", "0", "checked"); %> /><#checkbox_No#>
 												</div>
 											</td>
 										</tr>
-										<tr id="aliddns_interval_tr" style="display:none;">
+										<tr id="ddnsto_interval_tr" style="display:none;">
 											<th width="30%" style="border-top: 0 none;"><a class="help_tooltip" href="javascript: void(0)" onmouseover="openTooltip(this, 26, 9);">检查周期(秒) :</a></th>
 											<td style="border-top: 0 none;">
-												<input type="text" maxlength="5" class="input" size="15" id="aliddns_interval" name="aliddns_interval" placeholder="600" value="<% nvram_get_x("","aliddns_interval"); %>"  onkeypress="return is_number(this,event);" />
+												<input type="text" maxlength="5" class="input" size="15" id="ddnsto_interval" name="ddnsto_interval" placeholder="600" value="<% nvram_get_x("","ddnsto_interval"); %>"  onkeypress="return is_number(this,event);" />
 											</td>
 										</tr>
-										<tr id="aliddns_ttl_tr" style="display:none;">
+										<tr id="ddnsto_ttl_tr" style="display:none;">
 											<th width="30%" style="border-top: 0 none;"><a class="help_tooltip" href="javascript: void(0)" onmouseover="openTooltip(this, 26, 9);">解析TTL(秒) :</a></th>
 											<td style="border-top: 0 none;">
-												<input type="text" maxlength="5" class="input" size="15" id="aliddns_ttl" name="aliddns_ttl" placeholder="600" value="<% nvram_get_x("","aliddns_ttl"); %>"  onkeypress="return is_number(this,event);" />
+												<input type="text" maxlength="5" class="input" size="15" id="ddnsto_ttl" name="ddnsto_ttl" placeholder="600" value="<% nvram_get_x("","ddnsto_ttl"); %>"  onkeypress="return is_number(this,event);" />
 												<div>&nbsp;<span style="color:#888;">[1-86400]默认10分钟，免费版的范围是600-86400</span></div>
 											</td>
 										</tr>
-										<tr id="aliddns_ak_tr" style="display:none;">
+										<tr id="ddnsto_ak_tr" style="display:none;">
 											<th width="30%" style="border-top: 0 none;"><a class="help_tooltip" href="javascript: void(0)" onmouseover="openTooltip(this, 26, 9);">Access Key ID :</a></th>
 											<td style="border-top: 0 none;">
 											<div class="input-append">
-												<input type="password" maxlength="512" class="input" size="15" name="aliddns_ak" id="aliddns_ak" style="width: 175px;" value="<% nvram_get_x("","aliddns_ak"); %>" onKeyPress="return is_string(this,event);"/>
-												<button style="margin-left: -5px;" class="btn" type="button" onclick="passwordShowHide('aliddns_ak')"><i class="icon-eye-close"></i></button>
+												<input type="password" maxlength="512" class="input" size="15" name="ddnsto_ak" id="ddnsto_ak" style="width: 175px;" value="<% nvram_get_x("","ddnsto_ak"); %>" onKeyPress="return is_string(this,event);"/>
+												<button style="margin-left: -5px;" class="btn" type="button" onclick="passwordShowHide('ddnsto_ak')"><i class="icon-eye-close"></i></button>
 											</div>
 											</td>
 										</tr>
-										<tr id="aliddns_sk_tr" style="display:none;">
+										<tr id="ddnsto_sk_tr" style="display:none;">
 											<th width="30%" style="border-top: 0 none;"><a class="help_tooltip" href="javascript: void(0)" onmouseover="openTooltip(this, 26, 9);">Access Key Secret :</a></th>
 											<td style="border-top: 0 none;">
 											<div class="input-append">
-												<input type="password" maxlength="512" class="input" size="15" name="aliddns_sk" id="aliddns_sk" style="width: 175px;" value="<% nvram_get_x("","aliddns_sk"); %>" onKeyPress="return is_string(this,event);"/>
-												<button style="margin-left: -5px;" class="btn" type="button" onclick="passwordShowHide('aliddns_sk')"><i class="icon-eye-close"></i></button>
+												<input type="password" maxlength="512" class="input" size="15" name="ddnsto_sk" id="ddnsto_sk" style="width: 175px;" value="<% nvram_get_x("","ddnsto_sk"); %>" onKeyPress="return is_string(this,event);"/>
+												<button style="margin-left: -5px;" class="btn" type="button" onclick="passwordShowHide('ddnsto_sk')"><i class="icon-eye-close"></i></button>
 											</div>
 											</td>
 										</tr>
-										<tr id="aliddns_domain_tr" style="display:none;">
+										<tr id="ddnsto_domain_tr" style="display:none;">
 											<th width="30%" style="border-top: 0 none;"><a class="help_tooltip" href="javascript: void(0)" onmouseover="openTooltip(this, 26, 9);">顶级域名1</a></th>
 											<td style="border-top: 0 none;">
-												<input style="width: 80px;" type="text" maxlength="255" class="input" size="15" id="aliddns_name" name="aliddns_name" placeholder="www" value="<% nvram_get_x("","aliddns_name"); %>" onKeyPress="return is_string(this,event);" /> . <input style="width: 110px;" type="text" maxlength="255" class="input" size="15" id="aliddns_domain" name="aliddns_domain" placeholder="google.com" value="<% nvram_get_x("","aliddns_domain"); %>" onKeyPress="return is_string(this,event);" />
+												<input style="width: 80px;" type="text" maxlength="255" class="input" size="15" id="ddnsto_name" name="ddnsto_name" placeholder="www" value="<% nvram_get_x("","ddnsto_name"); %>" onKeyPress="return is_string(this,event);" /> . <input style="width: 110px;" type="text" maxlength="255" class="input" size="15" id="ddnsto_domain" name="ddnsto_domain" placeholder="google.com" value="<% nvram_get_x("","ddnsto_domain"); %>" onKeyPress="return is_string(this,event);" />
 											</td>
 										</tr>
-										<tr id="aliddns_domain2_tr" style="display:none;">
+										<tr id="ddnsto_domain2_tr" style="display:none;">
 											<th width="30%" style="border-top: 0 none;"><a class="help_tooltip" href="javascript: void(0)" onmouseover="openTooltip(this, 26, 9);">顶级域名2</a></th>
 											<td style="border-top: 0 none;">
-												<input style="width: 80px;" type="text" maxlength="255" class="input" size="15" id="aliddns_name2" name="aliddns_name2" placeholder="www" value="<% nvram_get_x("","aliddns_name2"); %>" onKeyPress="return is_string(this,event);" /> . <input style="width: 110px;" type="text" maxlength="255" class="input" size="15" id="aliddns_domain2" name="aliddns_domain2" placeholder="google.com" value="<% nvram_get_x("","aliddns_domain2"); %>" onKeyPress="return is_string(this,event);" />
+												<input style="width: 80px;" type="text" maxlength="255" class="input" size="15" id="ddnsto_name2" name="ddnsto_name2" placeholder="www" value="<% nvram_get_x("","ddnsto_name2"); %>" onKeyPress="return is_string(this,event);" /> . <input style="width: 110px;" type="text" maxlength="255" class="input" size="15" id="ddnsto_domain2" name="ddnsto_domain2" placeholder="google.com" value="<% nvram_get_x("","ddnsto_domain2"); %>" onKeyPress="return is_string(this,event);" />
 											</td>
 										</tr>
-										<tr id="aliddns_domain6_tr" style="display:none;">
+										<tr id="ddnsto_domain6_tr" style="display:none;">
 											<th width="30%" style="border-top: 0 none;"><a class="help_tooltip" href="javascript: void(0)" onmouseover="openTooltip(this, 26, 9);">顶级域名3[IPv6]</a></th>
 											<td style="border-top: 0 none;">
-												<input style="width: 80px;" type="text" maxlength="255" class="input" size="15" id="aliddns_name6" name="aliddns_name6" placeholder="www" value="<% nvram_get_x("","aliddns_name6"); %>" onKeyPress="return is_string(this,event);" /> . <input style="width: 110px;" type="text" maxlength="255" class="input" size="15" id="aliddns_domain6" name="aliddns_domain6" placeholder="google.com" value="<% nvram_get_x("","aliddns_domain6"); %>" onKeyPress="return is_string(this,event);" />
+												<input style="width: 80px;" type="text" maxlength="255" class="input" size="15" id="ddnsto_name6" name="ddnsto_name6" placeholder="www" value="<% nvram_get_x("","ddnsto_name6"); %>" onKeyPress="return is_string(this,event);" /> . <input style="width: 110px;" type="text" maxlength="255" class="input" size="15" id="ddnsto_domain6" name="ddnsto_domain6" placeholder="google.com" value="<% nvram_get_x("","ddnsto_domain6"); %>" onKeyPress="return is_string(this,event);" />
 											</td>
 										</tr>
 										<tr id="row_post_wan_script" style="display:none;">
 											<td colspan="2" style="border-top: 0 none;">
-												<i class="icon-hand-right"></i> <a href="javascript:spoiler_toggle('script2')"><span>Aliddns 脚本-基于 Aliddns 用户 API 实现的纯 Shell 动态域名客户端</span></a>
+												<i class="icon-hand-right"></i> <a href="javascript:spoiler_toggle('script2')"><span>ddnsto 脚本-基于 ddnsto 用户 API 实现的纯 Shell 动态域名客户端</span></a>
 												<div id="script2" style="display:none;">
 													<textarea rows="18" wrap="off" spellcheck="false" maxlength="314571" class="span12" name="scripts.ddns_script.sh" style="font-family:'Courier New'; font-size:12px;"><% nvram_dump("scripts.ddns_script.sh",""); %></textarea>
 												</div>
