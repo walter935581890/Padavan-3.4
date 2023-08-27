@@ -56,7 +56,7 @@ showMRULESList();
 
 }
 function showmenu(){
-showhide_div('allink', found_app_aliddns());
+showhide_div('allink', found_app_ddnsto());
 }
 function applyRule(){
 //	if(validForm()){
